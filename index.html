@@ -4,19 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
+
+  <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
   <title>Frontend Mentor | Todo app</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
 
-  Todo
+  <div class="background">
+
+  </div>
+  <div class="main-body">
+    <div class="whole-card">
+      <div class="heading">
+        <h1>Todo</h1>
+        <img src="images/icon-sun.svg" alt="" class="color-state" id="color-state">
+      </div>
+      <input type="text" class="input-field">
+      <div class="list">
+        <ul>
+          <li>Jog</li>
+          <li>write</li>
+          <li>Read</li>
+        </ul>
+      </div>
+      <div class="list-info">
+        <span class="number-left"><span class="number">3</span> left</span>
+        <span class="filter">
+          <p>All</p>
+          <p>Active</p>
+          <p>Completed</p>
+        </span>
+        <span class="clear-completed">Clear Completed</span>
+      </div>
+    </div>
+  </div>
+  
 
   <!-- Add dynamic number --> items left
 
@@ -30,7 +56,7 @@
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="#">Hope Ada</a>.
   </div>
 </body>
 </html>
