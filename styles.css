@@ -84,7 +84,14 @@ body{
     width: 20px;
 }
 
-/*  */
+/* Heading Typography */
+h1{
+    font-size: 30px;
+    color: var(--VeryLightGray);
+    letter-spacing: 10px;
+}
+
+/* Input */
 
 
 /* Bigger Screens */
@@ -95,6 +102,9 @@ body{
         height: 200px;
     }
     .whole-card{
-        width: 60vw;
+        width: 45vw;
     }
+
+
+        
 }
