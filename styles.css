@@ -54,7 +54,7 @@ body{
 }
 
 .background{
-    height: 150px;
+    height: 170px;
     background-image: url(images/bg-desktop-dark.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -73,6 +73,8 @@ body{
 .whole-card{
     width: 90vw;
     background-color: transparent;
+    position: relative;
+    top: -130px;
 }
 
 /* Heading */
@@ -83,7 +85,7 @@ body{
     justify-content: space-between;
     align-items: center;
     text-transform: uppercase;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 .heading img{
     height: 20px;
@@ -104,13 +106,13 @@ h1{
     width: 100%;
     background-color: var(--VeryDarkDesaturatedBlue);
     display: flex;
-    border-radius: 3px;
+    border-radius: 4px;
     align-items: center;
     padding-left: .8rem;
 }
 .input-field input{
     background-color: transparent;
-    padding: 1rem;
+    padding: 1.1rem 1rem;
     flex-grow: 1;
     color: var(--VeryLightGrayishBlue);
     font-family: Josefin Sans, sans-serif;
@@ -134,14 +136,15 @@ h1{
 .list{
     display: flex;
     flex-direction: column;
-    border-radius: 3px;
+    border-radius: 4px;
     background-color:var(--VeryDarkDesaturatedBlue);
 }
 .list .list-item{
-    padding: .8rem 1rem;
+    padding: 1rem 1rem;
     border-top: var(--border);
     color: var(--LightGrayishBlue);
     padding-left: 3rem;
+
     
 }
 .list-item p{
@@ -153,10 +156,11 @@ h1{
     width: 20px;
     height: 20px;
     position: absolute;
-    top: -2px;
+    top: -4px;
     left: -35px;
     border-radius: 50%;
     border: 1.2px solid #3c3e53;
+    cursor: pointer;
 }
 .list .list-item:nth-of-type(1){
     border-top: 0;
@@ -181,7 +185,7 @@ h1{
 .list-info{
     display: inline-flex;
     width: 100%;
-    font-size: 13px;
+    font-size: 11px;
     justify-content: space-between;
     color: var(--LightGrayishBlue);
     padding: 1rem 1.5rem;
@@ -191,6 +195,14 @@ h1{
 .list-info>.filter{
     display: none;
 }
+.filter p{
+    cursor: pointer;
+    opacity: .5;
+}
+.filter p:hover{
+    opacity: 1;
+}
+
 
 .whole-card>.filter{
     color: var(--LightGrayishBlue);
@@ -199,14 +211,28 @@ h1{
     align-items: center;
     justify-content: center;
     background-color: var(--VeryDarkDesaturatedBlue);
-    padding: .5rem 1rem;
+    padding: .9rem 1rem;
     margin-top: 1rem;
-    border-radius: 3px;
+    border-radius: 4px;
     margin-bottom: 2rem;
+    font-size: 14px;
 }
 .whole-card>.filter p{
     margin: 0 5px;
 }
+
+.number-left{
+    opacity: .5;
+}
+
+.clear-completed{
+    cursor: pointer;
+    opacity: .5;
+}
+.clear-completed:hover{
+    opacity: 1;
+}
+
 
 /* Bigger Screens */
 @media screen and (min-width: 726px) {
@@ -217,6 +243,7 @@ h1{
     }
     .whole-card{
         width: 45vw;
+        margin-bottom: 2rem;
     }
 
     /* List */
