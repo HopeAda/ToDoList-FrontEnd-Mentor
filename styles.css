@@ -58,7 +58,7 @@ body{
 
 .main-body{
     height: 100%;
-    background-color: var(--VeryDarkGrayishBlue);
+    background-color: var(--VeryDarkDesaturatedBlue);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,6 +92,27 @@ h1{
 }
 
 /* Input */
+.input-field{
+    width: 100%;
+    background-color: var(--VeryDarkGrayishBlue);
+    display: flex;
+    border-radius: 3px;
+}
+.input-field input{
+    background-color: transparent;
+    padding: .8rem 1rem;
+    flex-grow: 1;
+}
+/* .input-field input::before{
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: red;
+} */
+.input-field input::placeholder{
+    color: var(--VeryLightGrayishBlue);
+    opacity: .5;
+}
 
 
 /* Bigger Screens */
