@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -47,6 +49,7 @@
 body{
     width: 100vw;
     height: 100vh;
+    font-family: Josefin Sans, sans-serif;
 
 }
 
@@ -92,6 +95,7 @@ h1{
     font-size: 30px;
     color: var(--VeryLightGray);
     letter-spacing: 10px;
+    font-weight: 700;
 }
 
 /* Input */
@@ -109,6 +113,8 @@ h1{
     padding: 1rem;
     flex-grow: 1;
     color: var(--VeryLightGrayishBlue);
+    font-family: Josefin Sans, sans-serif;
+
 }
 .input-field input::placeholder{
     color: var(--VeryLightGrayishBlue);
@@ -170,9 +176,37 @@ h1{
     background-position: center;
 
 }
-/* .list>.filter
 
-.whole-card>.filter */
+/* List info */
+.list-info{
+    display: inline-flex;
+    width: 100%;
+    font-size: 13px;
+    justify-content: space-between;
+    color: var(--LightGrayishBlue);
+    padding: 1rem 1.5rem;
+}
+
+
+.list-info>.filter{
+    display: none;
+}
+
+.whole-card>.filter{
+    color: var(--LightGrayishBlue);
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--VeryDarkDesaturatedBlue);
+    padding: .5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 3px;
+    margin-bottom: 2rem;
+}
+.whole-card>.filter p{
+    margin: 0 5px;
+}
 
 /* Bigger Screens */
 @media screen and (min-width: 726px) {
@@ -192,5 +226,21 @@ h1{
     }
 
 
-        
+    /* Filter Area */
+
+    .list-info{
+        font-size: 11px;
+    }
+    .list-info>.filter{
+        display: inline-flex;
+
+    }
+    .list-info>.filter p{
+        margin: 0 3px;
+    }
+    
+    .whole-card>.filter{
+        display: none;
+    }
+    
 }
