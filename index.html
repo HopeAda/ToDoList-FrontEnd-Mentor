@@ -21,20 +21,22 @@
     <div class="whole-card">
       <div class="heading">
         <h1>Todo</h1>
-        <img src="images/icon-sun.svg" alt="" class="color-state" id="color-state" >
+        <img src="images/icon-sun.svg" alt="" class="color-state" id="color-state"  onclick="addToList()">
       </div>
       <div class="input-field">
         <div class="circle"></div>
         <input type="text" placeholder="Create a new todo..." id="input-box">
       </div>
       <div class="list" id="list">
+        <span class="inlist" id="inlist">
+        </span>
         <!-- <ul>
           <li>Jog</li>
           <li>write</li>
           <li>Read</li>
         </ul> -->
         <div class="list-info">
-          <span class="number-left"><span class="number">3</span> items left</span>
+          <span class="number-left"><span class="number" id="number"></span> items left</span>
           <span class="filter">
             <p>All</p>
             <p>Active</p>
