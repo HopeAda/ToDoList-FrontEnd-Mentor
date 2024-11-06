@@ -14,14 +14,14 @@
 </head>
 <body>
 
-  <div class="background">
+  <div class="background" id="background">
 
   </div>
   <div class="main-body">
     <div class="whole-card">
       <div class="heading">
         <h1>Todo</h1>
-        <img src="images/icon-sun.svg" alt="" class="color-state" id="color-state"  onclick="addToList()">
+        <img src="images/icon-sun.svg" alt="" class="color-state" id="color-state">
       </div>
       <div class="input-field">
         <div class="circle"></div>
@@ -42,7 +42,7 @@
             <p>Active</p>
             <p>Completed</p>
           </span>
-          <span class="clear-completed">Clear Completed</span>
+          <span class="clear-completed" id="clear-completed">Clear Completed</span>
         </div>
       </div>
       <span class="filter">
