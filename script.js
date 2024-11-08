@@ -9,18 +9,11 @@ var listNumber= 0;
 listNumberContainer.innerText = String(listNumber);
 let dark = false;
 
-if(dark){
-    colorState.src= "images/icon-moon.svg";
-    light = false;
-} else {
-    colorState.src= "images/icon-sun.svg";
-    light=true;
-}
 
 
 function addToList(){
     if (inputField.value == ''){
-        alert('Nothing to add..')
+        alert('Nothing to add..');
     } else {
         let span = document.createElement('span');
         span.classList.add('list-item');
@@ -31,13 +24,22 @@ function addToList(){
         let div = document.createElement('div');
         div.innerHTML= "\u00d7";
         span.append(div);
+        addCountList();
 
     }
     
     inputField.value= '';
-
-    addCountList();
+    
 }
+
+// function completedItems(){
+//     var completed = [];
+//     (document.querySelectorAll('.checked')).forEach(item=>{
+//         completed.push(item);
+//         minusCountList();
+//     });
+    
+// }
 
 function addCountList(){
     listNumber += 1;
@@ -48,17 +50,12 @@ function minusCountList(){
     if (listNumber>0){
         listNumber -= 1;
         listNumberContainer.innerText = String(listNumber);
-
+        
     }
-
+    
 }
 
 
-// colorState.addEventListener('click',changeColorState())
-
-// function changeColorState(){
-//     light= !light;
-// }
 
 listContainer.addEventListener('click', (e)=>{
     if (e.target.tagName === 'P'){
@@ -71,37 +68,100 @@ listContainer.addEventListener('click', (e)=>{
     } 
     if (e.target.tagName === 'DIV'){
         e.target.parentElement.remove();
-        if (!p.classList.contains('checked')){
+        if (!e.target.parentElement.children[0].classList.contains('checked')){
             minusCountList();
         }
     }
 })
 
 
-// Clear completed todos
 
-clearCompleted.addEventListener('click', ()=>{
-        let v= listContainer.getElementsByClassName('checked');
-        for (var i=0; i< v.length; i++){
-            console.log(i);
-            i.parentElement.remove();
-
-        }
-})
 
 // Light and Dark Modes
 
 function backgroundTheme(theme,icon){
-    background.src= `images/bg-desktop-${theme}.jpg`
+    background.style.backgroundImage= `url('images/bg-desktop-${theme}.jpg')`
     colorState.src= `images/icon-${icon}.svg`
 }
 function lightMode(){
     backgroundTheme('light','sun');
-
+    document.documentElement.setAttribute('data-theme', 'light');
+    dark= false;
+    
 }
 
 function darkMode(){
-    backgroundTheme('dark','moon')
+    backgroundTheme('dark','moon');
+    document.documentElement.setAttribute('data-theme', 'dark');
+    dark = true;
 }
 
-darkMode();
+
+// Enter key event listener
+
+inputField.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        // Execute the code you want on Enter key press
+        addToList();
+    }
+})
+
+// Theme Icon Event Listener
+
+colorState.addEventListener('click', ()=>{
+    if (dark === false){
+        darkMode();
+    } else if (dark){
+        lightMode();
+    }
+});
+
+
+// Clear completed todos
+clearCompleted.addEventListener('click', ()=>{
+    var completed = [];
+    (document.querySelectorAll('.checked')).forEach(item=>{
+        completed.push(item);
+    });
+    
+    completed.forEach(item=>{
+        item.parentElement.remove();
+    })
+})
+
+// const listItems = document.querySelectorAll('.list-item');
+
+// // Filtering the List
+// const filterAll= document.querySelectorAll('.filter-all');
+// const filterActive=document.querySelectorAll('.filter-active') ;
+// const filterCompleted= document.querySelectorAll('.filter-completed') ;
+
+// var listOfListItems = [];
+// listItems.forEach(item=>{
+//     listOfListItems.push(item);
+//     console.log(listOfListItems);
+// });
+
+// console.log(listItems);
+
+// filterAll.forEach(element => {
+//     element.addEventListener('click',()=>{
+
+
+// });
+// });
+
+// filterActive.forEach(element => {
+//     element.addEventListener('click',()=>{
+//         listItems.forEach(item=>{
+            
+//         })
+//     });
+    
+// });
+// filterCompleted.forEach(element => {
+//     element.addEventListener('click',()=>{
+        
+//     });
+    
+// });
