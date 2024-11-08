@@ -32,14 +32,6 @@ function addToList(){
     
 }
 
-// function completedItems(){
-//     var completed = [];
-//     (document.querySelectorAll('.checked')).forEach(item=>{
-//         completed.push(item);
-//         minusCountList();
-//     });
-    
-// }
 
 function addCountList(){
     listNumber += 1;
@@ -129,39 +121,74 @@ clearCompleted.addEventListener('click', ()=>{
     })
 })
 
-// const listItems = document.querySelectorAll('.list-item');
 
-// // Filtering the List
-// const filterAll= document.querySelectorAll('.filter-all');
-// const filterActive=document.querySelectorAll('.filter-active') ;
-// const filterCompleted= document.querySelectorAll('.filter-completed') ;
-
-// var listOfListItems = [];
-// listItems.forEach(item=>{
-//     listOfListItems.push(item);
-//     console.log(listOfListItems);
-// });
-
-// console.log(listItems);
-
-// filterAll.forEach(element => {
-//     element.addEventListener('click',()=>{
-
-
-// });
-// });
-
-// filterActive.forEach(element => {
-//     element.addEventListener('click',()=>{
-//         listItems.forEach(item=>{
             
-//         })
-//     });
-    
-// });
-// filterCompleted.forEach(element => {
-//     element.addEventListener('click',()=>{
+            const filterAll= document.querySelectorAll('.filter-all');
+            const filterActive=document.querySelectorAll('.filter-active') ;
+            const filterCompleted= document.querySelectorAll('.filter-completed') ;
+            
+            
+            
+            
+
+filterAll.forEach(element => {
+        element.addEventListener('click',()=>{
+            (document.querySelectorAll('.list-item')).forEach(item => {
+                item.style.display = 'inline-flex'
+            })
+        });
+});
+
+
+// const listItems = document.querySelectorAll('.list-item');
         
-//     });
+filterActive.forEach(element => {
     
-// });
+    element.addEventListener('click',()=>{
+        let notActive = [];
+        notCompleted= [];
+        (document.querySelectorAll('.list-item')).forEach(item=>{
+
+            if (item.firstElementChild.classList.contains('checked')){
+    
+                notActive.push(item);
+    
+            } else {
+                notCompleted.push(item);
+            }
+            notActive.forEach(item=>{
+                item.style.display  = 'none';
+            })
+            notCompleted.forEach(item =>{
+                item.style.display = 'inline-flex'
+            })
+
+
+        
+        // })
+        });
+    });
+});
+
+filterCompleted.forEach(element => {
+    element.addEventListener('click',()=>{
+        element.addEventListener('click', ()=>{
+            let notCompleted = [];
+            let notActive = [];
+            (document.querySelectorAll('.list-item')).forEach(item =>{
+                if (!item.firstElementChild.classList.contains('checked')){
+                    notCompleted.push(item);
+                } else {
+                    notActive.push(item);
+                }
+                notCompleted.forEach(item =>{
+                    item.style.display = 'none';
+                })
+                notActive.forEach(item =>{
+                    item.style.display = 'inline-flex'
+                })
+            })
+        })
+    });
+    
+});

@@ -183,9 +183,6 @@ h1{
 .inlist .list-item:nth-of-type(1){
     border-top: 0;
 }
-.inlist .list-item:nth-last-of-type(1){
-    border-bottom: var(--border) ;
-}
 
 /* Checked List Items */
 
@@ -223,6 +220,7 @@ h1{
     justify-content: space-between;
     color: var(--LightGrayishBlue);
     padding: 1rem 1.5rem;
+    border-top: var(--border);
 }
 
 
