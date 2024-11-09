@@ -141,11 +141,10 @@ function activeFilter(name,wrong1, wrong2){
 }
 
 function all(){
-    activeFilter(filterAll, filterActive,filterCompleted);
     (document.querySelectorAll('.list-item')).forEach(item => {
         item.style.display = 'inline-flex'
     });
-    saveData();
+    activeFilter(filterAll, filterActive,filterCompleted);
 
 }
 
@@ -237,7 +236,7 @@ function getThemeFromStorage(){
 
 function getData(){
     listContainer.innerHTML = localStorage.getItem('listdata'); 
-
+    all();
     countList();
 }
 
