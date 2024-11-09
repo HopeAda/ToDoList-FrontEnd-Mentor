@@ -5,13 +5,19 @@ const listNumberContainer= document.getElementById('number');
 const clearCompleted= document.getElementById('clear-completed');
 const background= document.getElementById('background');
 
+
 var listNumber= 0;
 listNumberContainer.innerText = String(listNumber);
 let dark = false;
 
 
 
+
+getThemeFromStorage();
+
+
 function addToList(){
+    all();
     if (inputField.value == ''){
         alert('Nothing to add..');
     } else {
@@ -24,7 +30,8 @@ function addToList(){
         let div = document.createElement('div');
         div.innerHTML= "\u00d7";
         span.append(div);
-        addCountList();
+        countList();
+        saveData();
 
     }
     
@@ -32,37 +39,46 @@ function addToList(){
     
 }
 
-
-function addCountList(){
-    listNumber += 1;
+function countList(){
+    listNumber = listContainer.querySelectorAll('.list-item p:not(.checked)').length;
     listNumberContainer.innerText = String(listNumber);
 
 }
-function minusCountList(){
-    if (listNumber>0){
-        listNumber -= 1;
-        listNumberContainer.innerText = String(listNumber);
+// function addCountList(){
+//     listNumber += 1;
+//     listNumberContainer.innerText = String(listNumber);
+// }
+// function minusCountList(){
+//     if (listNumber>0){
+//         listNumber -= 1;
+//         listNumberContainer.innerText = String(listNumber);
         
-    }
+        
+//     }
     
-}
+//}
 
 
 
 listContainer.addEventListener('click', (e)=>{
     if (e.target.tagName === 'P'){
         e.target.classList.toggle('checked');
-        if (e.target.classList.contains('checked')){
-            minusCountList();
-        } else {
-            addCountList();
-        }
+        countList();
+        saveData();
+        // if (e.target.classList.contains('checked')){
+        //     countList();
+        // } else {
+        //     countList();
+        // }
     } 
     if (e.target.tagName === 'DIV'){
         e.target.parentElement.remove();
-        if (!e.target.parentElement.children[0].classList.contains('checked')){
-            minusCountList();
-        }
+        countList();
+        // if (!e.target.parentElement.children[0].classList.contains('checked')){
+        //     countList();
+        // }
+        saveData();
+    
     }
 })
 
@@ -79,6 +95,7 @@ function lightMode(){
     backgroundTheme('light','sun');
     document.documentElement.setAttribute('data-theme', 'light');
     dark= false;
+
     
 }
 
@@ -103,8 +120,11 @@ inputField.addEventListener("keydown", function(event) {
 colorState.addEventListener('click', ()=>{
     if (dark === false){
         darkMode();
+        saveInLocalStorage();
+
     } else if (dark){
         lightMode();
+        saveInLocalStorage();
     }
 });
 
@@ -119,6 +139,7 @@ clearCompleted.addEventListener('click', ()=>{
     completed.forEach(item=>{
         item.parentElement.remove();
     })
+    saveData();
 })
 
 
@@ -130,13 +151,14 @@ clearCompleted.addEventListener('click', ()=>{
             
             
             
+function all(){
+    (document.querySelectorAll('.list-item')).forEach(item => {
+        item.style.display = 'inline-flex'
+    })
+}
 
 filterAll.forEach(element => {
-        element.addEventListener('click',()=>{
-            (document.querySelectorAll('.list-item')).forEach(item => {
-                item.style.display = 'inline-flex'
-            })
-        });
+        element.addEventListener('click', all);
 });
 
 
@@ -145,14 +167,15 @@ filterAll.forEach(element => {
 filterActive.forEach(element => {
     
     element.addEventListener('click',()=>{
+        
         let notActive = [];
         notCompleted= [];
         (document.querySelectorAll('.list-item')).forEach(item=>{
-
+            
             if (item.firstElementChild.classList.contains('checked')){
-    
+                
                 notActive.push(item);
-    
+                
             } else {
                 notCompleted.push(item);
             }
@@ -162,10 +185,10 @@ filterActive.forEach(element => {
             notCompleted.forEach(item =>{
                 item.style.display = 'inline-flex'
             })
-
-
-        
-        // })
+            
+            
+            
+            // })
         });
     });
 });
@@ -173,6 +196,7 @@ filterActive.forEach(element => {
 filterCompleted.forEach(element => {
     element.addEventListener('click',()=>{
         element.addEventListener('click', ()=>{
+
             let notCompleted = [];
             let notActive = [];
             (document.querySelectorAll('.list-item')).forEach(item =>{
@@ -192,3 +216,37 @@ filterCompleted.forEach(element => {
     });
     
 });
+
+// Local storage
+function saveData(){
+    localStorage.setItem('listdata', listContainer.innerHTML);
+
+}
+
+function saveInLocalStorage(){
+    const themes= document.documentElement.getAttribute('data-theme');
+    localStorage.setItem('theme', themes);
+
+    
+
+}
+
+function getThemeFromStorage(){
+    chosenTheme= localStorage.getItem('theme');
+    document.documentElement.setAttribute('data-theme', chosenTheme);
+    if (chosenTheme === 'dark'){
+        darkMode();
+    } else { 
+        lightMode();
+    }
+}
+
+function getData(){
+    listContainer.innerHTML = localStorage.getItem('listdata'); 
+
+    countList();
+}
+
+
+
+getData();

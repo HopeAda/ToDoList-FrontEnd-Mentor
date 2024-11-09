@@ -16,19 +16,15 @@
 
 
 :root{
+    --BrightBlue: hsl(220, 98%, 61%);
     --background-color: hsl(236, 33%, 92%);
     --card-color:hsl(0, 0%, 98%);
     --text-color:hsl(235, 24%, 19%);
     --circle-border-color:1.2px solid hsl(236, 9%, 61%);
     --border:solid 1px hsl(236, 9%, 61%);
     --hover-color:hsl(233, 11%, 84%);
+    --circle-border-hover: 1.2px solid hsl(220, 98%, 61%);
     
-    /* --background-color:#181824;
-    --card-color:hsl(235, 24%, 19%);
-    --text-color: hsl(0, 0%, 98%);
-    --circle-border-color:1.2px solid #3c3e53;
-    --border: solid 1px #3c3e53;
-    --hover-color:hsl(233, 14%, 35%); */
 
     
 }
@@ -183,6 +179,9 @@ h1{
 .inlist .list-item:nth-of-type(1){
     border-top: 0;
 }
+.list-item p:hover::before{
+    border: var(--circle-border-hover);
+}
 
 /* Checked List Items */
 
@@ -235,6 +234,10 @@ h1{
     opacity: 1;
 }
 
+.selected{
+    color: var(--BrightBlue);
+    opacity: 1;
+}
 
 .whole-card>.filter{
     color: var(--LightGrayishBlue);
