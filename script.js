@@ -71,7 +71,7 @@ function backgroundTheme(theme,icon){
     colorState.src= `images/icon-${icon}.svg`
 }
 function lightMode(){
-    backgroundTheme('light','sun');
+    backgroundTheme('light','moon');
     document.documentElement.setAttribute('data-theme', 'light');
     dark= false;
 
@@ -79,7 +79,7 @@ function lightMode(){
 }
 
 function darkMode(){
-    backgroundTheme('dark','moon');
+    backgroundTheme('dark','sun');
     document.documentElement.setAttribute('data-theme', 'dark');
     dark = true;
 }
