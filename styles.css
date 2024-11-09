@@ -211,6 +211,18 @@ h1{
 }
 
 
+.color{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.color:hover{
+    background-color: hsla(237, 9%, 61%, 0.308);
+}
+
 /* List info */
 .list-info{
     display: inline-flex;
@@ -234,7 +246,7 @@ h1{
     opacity: 1;
 }
 
-.selected{
+.filter p.selected{
     color: var(--BrightBlue);
     opacity: 1;
 }

@@ -44,19 +44,6 @@ function countList(){
     listNumberContainer.innerText = String(listNumber);
 
 }
-// function addCountList(){
-//     listNumber += 1;
-//     listNumberContainer.innerText = String(listNumber);
-// }
-// function minusCountList(){
-//     if (listNumber>0){
-//         listNumber -= 1;
-//         listNumberContainer.innerText = String(listNumber);
-        
-        
-//     }
-    
-//}
 
 
 
@@ -65,18 +52,10 @@ listContainer.addEventListener('click', (e)=>{
         e.target.classList.toggle('checked');
         countList();
         saveData();
-        // if (e.target.classList.contains('checked')){
-        //     countList();
-        // } else {
-        //     countList();
-        // }
     } 
     if (e.target.tagName === 'DIV'){
         e.target.parentElement.remove();
         countList();
-        // if (!e.target.parentElement.children[0].classList.contains('checked')){
-        //     countList();
-        // }
         saveData();
     
     }
@@ -110,7 +89,6 @@ function darkMode(){
 
 inputField.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
-        // Execute the code you want on Enter key press
         addToList();
     }
 })
@@ -144,17 +122,31 @@ clearCompleted.addEventListener('click', ()=>{
 
 
             
-            const filterAll= document.querySelectorAll('.filter-all');
-            const filterActive=document.querySelectorAll('.filter-active') ;
-            const filterCompleted= document.querySelectorAll('.filter-completed') ;
-            
-            
-            
-            
+const filterAll= document.querySelectorAll('.filter-all');
+const filterActive=document.querySelectorAll('.filter-active') ;
+const filterCompleted= document.querySelectorAll('.filter-completed') ;
+
+function activeFilter(name,wrong1, wrong2){
+    name.forEach(item=>{
+        item.classList.add('selected');
+    })
+    wrong1.forEach(item=>{
+        item.classList.remove('selected');
+    })
+    wrong2.forEach(item=>{
+        item.classList.remove('selected');
+    })
+
+
+}
+
 function all(){
+    activeFilter(filterAll, filterActive,filterCompleted);
     (document.querySelectorAll('.list-item')).forEach(item => {
         item.style.display = 'inline-flex'
-    })
+    });
+    saveData();
+
 }
 
 filterAll.forEach(element => {
@@ -167,7 +159,7 @@ filterAll.forEach(element => {
 filterActive.forEach(element => {
     
     element.addEventListener('click',()=>{
-        
+        activeFilter(filterActive,filterAll,filterCompleted);
         let notActive = [];
         notCompleted= [];
         (document.querySelectorAll('.list-item')).forEach(item=>{
@@ -190,13 +182,14 @@ filterActive.forEach(element => {
             
             // })
         });
+        saveData();
     });
 });
 
 filterCompleted.forEach(element => {
     element.addEventListener('click',()=>{
         element.addEventListener('click', ()=>{
-
+            activeFilter(filterCompleted,filterAll,filterActive)
             let notCompleted = [];
             let notActive = [];
             (document.querySelectorAll('.list-item')).forEach(item =>{
@@ -212,6 +205,7 @@ filterCompleted.forEach(element => {
                     item.style.display = 'inline-flex'
                 })
             })
+            saveData();
         })
     });
     
